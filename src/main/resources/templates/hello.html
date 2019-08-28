@@ -7,8 +7,13 @@
 <body>
     <h1>Hello World</h1>
     <form method="POST" action="/hello">
-    好きな数字を入力：<input type="text" name="text1" th:value="${text1_value}" />
-    <input type="submit" value="クリック" />
+        好きな数字を入力：<input type="text" name="text1" th:value="${text1_value}" />
+        <input type="submit" value="クリック" />
+    </form>
+    <br />
+    <form method="POST" action="/hello/db">
+        従業員IDを入力：<input type="text" name="text2" th:value="${text2_value}" />
+        <input type="submit" value="クリック" />
     </form>
 </body>
 </html>
