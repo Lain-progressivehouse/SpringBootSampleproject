@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <form method="POST" action="/hello">
+    好きな数字を入力：<input type="text" name="text1" th:value="${text1_value}" />
+    <input type="submit" value="クリック" />
+    </form>
+</body>
+</html>
