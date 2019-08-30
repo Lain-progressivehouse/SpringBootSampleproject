@@ -30,7 +30,7 @@ public class SignupForm {
     /**
      * 誕生日
      */
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date birthday;
 
     /**
