@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <head>
+        <meta charset="UTF-8">
+
+        <!-- Bootstrapの設定 -->
+        <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+        <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+        <!-- CSSの読み込み -->
+        <link rel="stylesheet" th:href="@{/css/home.css}">
+
+        <title>Home</title>
+    </head>
+
+    <body>
+        <!-- =====ヘッダー（ナビゲーションバー）===== -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">SpringSample</a>
+                </div>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-link pull-right navbar-brand">ログアウト</button>
+                </form>
+            </div>
+        </nav>
+
+        <!-- =====サイドバー===== -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2 sidebar">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li role="presentation"><a th:href="@{userList}">ユーザー画面</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====コンテンツ===== -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-2 main">
+                    <!-- th:include：この属性が付いているタグ内に、コンテンツ部分のhtmlが追加される -->
+                    <!-- プリプロセシングを使うには、__(アンダースコア2つ)を前後につける -->
+                    <div th:include="__${contents}__"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
