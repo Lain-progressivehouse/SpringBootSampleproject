@@ -3,14 +3,17 @@ package com.example.sampleproject.login.controller;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.example.sampleproject.login.domain.model.SignupForm;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- * SignupController
- * ユーザー登録画面
+ * SignupController ユーザー登録画面
  */
 @Controller
 public class SignupController {
@@ -22,6 +25,7 @@ public class SignupController {
 
     /**
      * ラジオボタンの初期化メソッド
+     * 
      * @return ラジオボタン
      */
     private Map<String, String> initRadioMarriage() {
@@ -29,17 +33,19 @@ public class SignupController {
 
         radio.put("既婚", "true");
         radio.put("未婚", "false");
-        
+
         return radio;
     }
 
     /**
      * ユーザー登録画面のGET用コントローラー
+     * 
+     * @param form
      * @param model
      * @return signup.htmlに遷移
      */
     @GetMapping("/signup")
-    public String getSignUp(Model model) {
+    public String getSignUp(@ModelAttribute SignupForm form, Model model) {
         // ラジオボタンの初期化
         radioMarriage = initRadioMarriage();
 
@@ -52,13 +58,23 @@ public class SignupController {
 
     /**
      * ユーザー登録画面のPOST用のコントローラー
+     * 
+     * @param form
+     * @param bindResult
      * @param model
      * @return login.htmlに遷移
      */
     @PostMapping("/signup")
-    public String postSignU(Model model) {
+    public String postSignU(@ModelAttribute SignupForm form, BindingResult bindingResult, Model model) {
+        // 入力チェックに引っかかった場合、ユーザー登録画面に戻る
+        if (bindingResult.hasErrors()) {
+            return getSignUp(form, model);
+        }
+
+        System.out.println(form);
+
         // login.htmlにリダイレクト
         return "redirect:/login";
     }
-    
+
 }

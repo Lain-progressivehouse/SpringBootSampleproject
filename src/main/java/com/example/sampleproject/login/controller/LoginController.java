@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class LoginController {
-    
+
     /**
      * ログイン画面のGET用コントローラー
+     * 
      * @param model
      * @return login.htmlに遷移
      */
@@ -21,9 +22,9 @@ public class LoginController {
         return "login/login";
     }
 
-
     /**
      * ログイン画面のPOST用コントローラー
+     * 
      * @param model
      * @return login.htmlに遷移
      */
@@ -31,5 +32,5 @@ public class LoginController {
     public String postLogin(Model model) {
         return "/login/login";
     }
-    
+
 }
